@@ -1,0 +1,69 @@
+<html> 
+<head> 
+<title>BMI</title> 
+<style>
+        body{
+          background-color: purple;
+          border-top: 24;
+        }
+        .m{
+          background-color:rgb(red, green, blue);
+          border-style: dotted;
+          margin-top: 150px;
+          margin-left: 520px;
+          margin-right: 500px;
+          
+        }
+            .main{
+                font-size: 230%;
+                text-align: center;
+                background-color: rgb(red, green, blue);
+                 margin-left: 50px;
+                  margin-right: 50px;
+                  padding: 50px;
+                  
+                  
+            }
+            .a{
+                font-size: 150%;
+                text-align: center;
+                background-color: sienna;
+                 margin-left: 50px;
+                  margin-right: 50px;
+                
+                 
+            }
+            form{
+              text-align: center;
+              background-color: blueviolet;
+               margin-left: 50px;
+             margin-right: 50px;
+             padding: 50px;
+            }
+           
+        </style>
+</head> 
+
+    <center>
+    <h1>Farzana Mubarak (25013772)</h1>
+<div class="edge"> 
+<div class="box"> 
+<h1>BMI</h1> 
+<form method="POST">
+{%csrf_token %}
+<div class="formelt"> 
+height:<input type="text" name="height" value="{{h}}"></input>(in m)<br/> 
+</div> 
+<div class="formelt"> 
+weight:<input type="text" name="weight" value="{{w}}"></input>(in kg)<br/> 
+</div> 
+<div class="formelt"> 
+<input type="submit" value="Calculate"></input><br/> 
+</div> 
+<div class="formelt"> 
+BMI:<input type="text" name="BMI" value="{{BMI}}"></input>kg/m<sup>2</sup><br/> 
+</div>
+</form>
+</div>
+</div> 
+</body>

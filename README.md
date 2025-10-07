@@ -1,15 +1,15 @@
 # Ex.05 Design a Website for Server Side Processing
-## Date:
+## Date:06.09.2025
 
 ## AIM:
- To design a website to calculate the power of a lamp filament in an incandescent bulb in the server side. 
+ To design a website to calculate the Body Mass Index (BMI) in the server side.
 
 
 ## FORMULA:
-P = I<sup>2</sup>R
-<br> P --> Power (in watts)
-<br> I --> Intensity
-<br> R --> Resistance
+BMI = W/H<sup>2</sup>R
+<br> BMI --> Body Mass Index
+<br> w --> Weight
+<br> H --> Height
 
 ## DESIGN STEPS:
 
@@ -32,13 +32,121 @@ Create a HTML file to implement form based input and output.
 Publish the website in the given URL.
 
 ## PROGRAM :
+``` 
+math.html
+
+<html> 
+<head> 
+<title>BMI</title> 
+<style>
+        body{
+          background-color: purple;
+          border-top: 24;
+        }
+        .m{
+          background-color:rgb(red, green, blue);
+          border-style: dotted;
+          margin-top: 150px;
+          margin-left: 520px;
+          margin-right: 500px;
+          
+        }
+            .main{
+                font-size: 230%;
+                text-align: center;
+                background-color: rgb(red, green, blue);
+                 margin-left: 50px;
+                  margin-right: 50px;
+                  padding: 50px;
+                  
+                  
+            }
+            .a{
+                font-size: 150%;
+                text-align: center;
+                background-color: sienna;
+                 margin-left: 50px;
+                  margin-right: 50px;
+                
+                 
+            }
+            form{
+              text-align: center;
+              background-color: blueviolet;
+               margin-left: 50px;
+             margin-right: 50px;
+             padding: 50px;
+            }
+           
+        </style>
+</head> 
+
+    <center>
+    <h1>Farzana Mubarak (25013772)</h1>
+<div class="edge"> 
+<div class="box"> 
+<h1>BMI</h1> 
+<form method="POST">
+{%csrf_token %}
+<div class="formelt"> 
+height:<input type="text" name="height" value="{{h}}"></input>(in m)<br/> 
+</div> 
+<div class="formelt"> 
+weight:<input type="text" name="weight" value="{{w}}"></input>(in kg)<br/> 
+</div> 
+<div class="formelt"> 
+<input type="submit" value="Calculate"></input><br/> 
+</div> 
+<div class="formelt"> 
+BMI:<input type="text" name="BMI" value="{{BMI}}"></input>kg/m<sup>2</sup><br/> 
+</div>
+</form>
+</div>
+</div> 
+</body>
+
+view.py
+
+from django.shortcuts import render
+def BMI(request): 
+    context={} 
+    context['BMI'] = "0" 
+    context['h'] = "0" 
+    context['w'] = "0" 
+    if request.method == 'POST': 
+        print("POST method is used")
+        h = request.POST.get('height','0')
+        w = request.POST.get('weight','0')
+        print('request=',request) 
+        print('height=',h) 
+        print('weight=',w) 
+        BMI = int(w)/((int(h)/100)**2)
+        context['BMI'] = BMI 
+        context['h'] = h
+        context['w'] = w 
+        print('BMI=',BMI) 
+    return render(request,'mathapp/math.html',context)
+
+    urls.py
+    
+from django.contrib import admin 
+from django.urls import path 
+from mathapp import views 
+urlpatterns = [ 
+    path('admin/', admin.site.urls), 
+    path('BMI/',views.BMI,name="BMI"),
+    path('',views.BMI,name="BMI")
+]
+
+```
 
 
 ## SERVER SIDE PROCESSING:
+![alt text](<Screenshot 2025-10-07 173817.png>)
 
 
 ## HOMEPAGE:
-
+![alt text](<Screenshot 2025-10-07 173648.png>)
 
 ## RESULT:
 The program for performing server side processing is completed successfully.
